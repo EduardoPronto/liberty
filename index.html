@@ -1,0 +1,1089 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="A Liberty Voip tem as melhores soluções de Telefonia Digital para escalar a comunicação do seu negócio." />
+  <meta property="og:title" content="LIBERTY VOIP - TELEFONIA DIGITAL" />
+  <meta property="og:description" content="Soluções de Telefonia Digital para escalar a comunicação do seu negócio." />
+  <meta property="og:type" content="website" />
+  <title>LIBERTY VOIP — TELEFONIA DIGITAL</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
+
+  <style>
+    /* ─── TOKENS ─────────────────────────────────────────── */
+    :root {
+      --black:   #030508;
+      --dark:    #0a0d12;
+      --card:    #0f1318;
+      --border:  rgba(0,200,255,.10);
+      --cyan:    #00c8ff;
+      --blue:    #1a6bff;
+      --gold:    #c9a96e;
+      --white:   #f0f4f8;
+      --muted:   #7a8899;
+      --radius:  14px;
+      --transition: .35s cubic-bezier(.4,0,.2,1);
+    }
+
+    /* ─── RESET ──────────────────────────────────────────── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--black);
+      color: var(--white);
+      font-family: 'DM Sans', sans-serif;
+      font-size: 16px;
+      line-height: 1.65;
+      overflow-x: hidden;
+    }
+
+    img { max-width: 100%; display: block; }
+    a   { color: inherit; text-decoration: none; }
+
+    /* ─── UTILITIES ──────────────────────────────────────── */
+    .container {
+      width: 90%;
+      max-width: 1140px;
+      margin: 0 auto;
+    }
+
+    .gradient-text {
+      background: linear-gradient(90deg, var(--cyan), var(--blue));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .gold-text { color: var(--gold); }
+
+    /* ─── NAVBAR ─────────────────────────────────────────── */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      padding: 18px 0;
+      background: rgba(3,5,8,.75);
+      backdrop-filter: blur(18px);
+      -webkit-backdrop-filter: blur(18px);
+      border-bottom: 1px solid var(--border);
+      transition: padding var(--transition);
+    }
+
+    nav.scrolled { padding: 12px 0; }
+
+    .nav-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .nav-logo img { height: 44px; width: auto; }
+
+    .nav-links {
+      display: flex;
+      gap: 36px;
+      list-style: none;
+    }
+
+    .nav-links a {
+      font-family: 'Syne', sans-serif;
+      font-size: .82rem;
+      font-weight: 600;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      color: var(--muted);
+      transition: color var(--transition);
+    }
+
+    .nav-links a:hover { color: var(--cyan); }
+
+    .nav-cta {
+      background: linear-gradient(135deg, var(--cyan), var(--blue));
+      color: #000 !important;
+      font-family: 'Syne', sans-serif;
+      font-size: .78rem;
+      font-weight: 700;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      padding: 10px 22px;
+      border-radius: 50px;
+      transition: opacity var(--transition), transform var(--transition);
+    }
+
+    .nav-cta:hover { opacity: .85; transform: translateY(-1px); color: #000 !important; }
+
+    /* hamburger */
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+      padding: 4px;
+    }
+    .hamburger span {
+      display: block;
+      width: 24px;
+      height: 2px;
+      background: var(--white);
+      border-radius: 2px;
+      transition: var(--transition);
+    }
+
+    /* ─── HERO ───────────────────────────────────────────── */
+    .hero {
+      position: relative;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      overflow: hidden;
+      padding-top: 80px;
+    }
+
+    /* animated background */
+    .hero-bg {
+      position: absolute;
+      inset: 0;
+      z-index: 0;
+    }
+
+    .hero-bg::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(ellipse 70% 60% at 60% 40%, rgba(0,200,255,.13) 0%, transparent 70%),
+        radial-gradient(ellipse 40% 50% at 20% 70%, rgba(26,107,255,.10) 0%, transparent 60%);
+    }
+
+    /* subtle grid */
+    .hero-bg::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(0,200,255,.04) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(0,200,255,.04) 1px, transparent 1px);
+      background-size: 60px 60px;
+      mask-image: radial-gradient(ellipse 80% 80% at 50% 50%, black 40%, transparent 80%);
+    }
+
+    /* floating orbs */
+    .orb {
+      position: absolute;
+      border-radius: 50%;
+      filter: blur(80px);
+      animation: float 8s ease-in-out infinite alternate;
+    }
+
+    .orb-1 {
+      width: 500px; height: 500px;
+      background: radial-gradient(circle, rgba(0,200,255,.18), transparent 70%);
+      top: -100px; right: -100px;
+      animation-duration: 9s;
+    }
+
+    .orb-2 {
+      width: 350px; height: 350px;
+      background: radial-gradient(circle, rgba(26,107,255,.15), transparent 70%);
+      bottom: 0; left: -80px;
+      animation-duration: 11s;
+      animation-delay: -3s;
+    }
+
+    @keyframes float {
+      from { transform: translate(0,0) scale(1); }
+      to   { transform: translate(30px,-30px) scale(1.05); }
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 1;
+      max-width: 720px;
+    }
+
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(0,200,255,.08);
+      border: 1px solid rgba(0,200,255,.2);
+      border-radius: 50px;
+      padding: 6px 16px;
+      font-size: .78rem;
+      font-weight: 500;
+      letter-spacing: .06em;
+      color: var(--cyan);
+      text-transform: uppercase;
+      margin-bottom: 28px;
+      animation: fadeUp .6s both;
+    }
+
+    .hero-badge::before {
+      content: '';
+      width: 6px; height: 6px;
+      border-radius: 50%;
+      background: var(--cyan);
+      box-shadow: 0 0 8px var(--cyan);
+      animation: pulse 1.5s infinite;
+    }
+
+    @keyframes pulse {
+      0%,100% { opacity: 1; }
+      50%      { opacity: .3; }
+    }
+
+    .hero h1 {
+      font-family: 'Syne', sans-serif;
+      font-size: clamp(2.6rem, 6vw, 4.8rem);
+      font-weight: 800;
+      line-height: 1.05;
+      letter-spacing: -.02em;
+      margin-bottom: 24px;
+      animation: fadeUp .6s .1s both;
+    }
+
+    .hero h1 em {
+      font-style: normal;
+      display: block;
+    }
+
+    .hero p {
+      font-size: 1.15rem;
+      color: var(--muted);
+      max-width: 520px;
+      margin-bottom: 44px;
+      animation: fadeUp .6s .2s both;
+    }
+
+    .hero-actions {
+      display: flex;
+      gap: 16px;
+      flex-wrap: wrap;
+      animation: fadeUp .6s .3s both;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      font-family: 'Syne', sans-serif;
+      font-weight: 700;
+      font-size: .88rem;
+      letter-spacing: .06em;
+      text-transform: uppercase;
+      padding: 14px 30px;
+      border-radius: 50px;
+      cursor: pointer;
+      transition: transform var(--transition), opacity var(--transition), box-shadow var(--transition);
+      border: none;
+    }
+
+    .btn:hover { transform: translateY(-2px); }
+
+    .btn-primary {
+      background: linear-gradient(135deg, var(--cyan), var(--blue));
+      color: #000;
+      box-shadow: 0 0 30px rgba(0,200,255,.25);
+    }
+
+    .btn-primary:hover { box-shadow: 0 0 44px rgba(0,200,255,.4); }
+
+    .btn-whatsapp {
+      background: #25d366;
+      color: #fff;
+      box-shadow: 0 0 24px rgba(37,211,102,.2);
+    }
+
+    .btn-whatsapp:hover { box-shadow: 0 0 36px rgba(37,211,102,.35); }
+
+    .btn-outline {
+      background: transparent;
+      color: var(--white);
+      border: 1px solid rgba(255,255,255,.15);
+    }
+
+    .btn-outline:hover { border-color: var(--cyan); color: var(--cyan); }
+
+    /* hero stats */
+    .hero-stats {
+      position: relative;
+      z-index: 1;
+      display: flex;
+      gap: 48px;
+      margin-top: 72px;
+      padding-top: 36px;
+      border-top: 1px solid var(--border);
+      animation: fadeUp .6s .4s both;
+    }
+
+    .stat-num {
+      font-family: 'Syne', sans-serif;
+      font-size: 2rem;
+      font-weight: 800;
+    }
+
+    .stat-label {
+      font-size: .8rem;
+      color: var(--muted);
+      text-transform: uppercase;
+      letter-spacing: .06em;
+    }
+
+    /* ─── SECTION COMMON ─────────────────────────────────── */
+    section { padding: 100px 0; }
+
+    .section-tag {
+      font-family: 'Syne', sans-serif;
+      font-size: .74rem;
+      font-weight: 700;
+      letter-spacing: .18em;
+      text-transform: uppercase;
+      color: var(--cyan);
+      margin-bottom: 14px;
+    }
+
+    .section-title {
+      font-family: 'Syne', sans-serif;
+      font-size: clamp(1.8rem, 4vw, 3rem);
+      font-weight: 800;
+      line-height: 1.1;
+      letter-spacing: -.02em;
+      margin-bottom: 18px;
+    }
+
+    .section-sub {
+      font-size: 1rem;
+      color: var(--muted);
+      max-width: 520px;
+    }
+
+    .section-header { margin-bottom: 60px; }
+
+    /* ─── SERVICES ───────────────────────────────────────── */
+    #servicos { background: var(--dark); }
+
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 20px;
+    }
+
+    .service-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 36px 32px;
+      position: relative;
+      overflow: hidden;
+      transition: transform var(--transition), border-color var(--transition), box-shadow var(--transition);
+    }
+
+    .service-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 2px;
+      background: linear-gradient(90deg, var(--cyan), var(--blue));
+      opacity: 0;
+      transition: opacity var(--transition);
+    }
+
+    .service-card:hover {
+      transform: translateY(-4px);
+      border-color: rgba(0,200,255,.2);
+      box-shadow: 0 20px 60px rgba(0,200,255,.07);
+    }
+
+    .service-card:hover::before { opacity: 1; }
+
+    .service-icon {
+      width: 52px; height: 52px;
+      border-radius: 12px;
+      background: rgba(0,200,255,.08);
+      border: 1px solid rgba(0,200,255,.15);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 24px;
+      font-size: 1.4rem;
+    }
+
+    .service-card h3 {
+      font-family: 'Syne', sans-serif;
+      font-size: 1.15rem;
+      font-weight: 700;
+      margin-bottom: 10px;
+      color: var(--white);
+    }
+
+    .service-card p {
+      font-size: .9rem;
+      color: var(--muted);
+      line-height: 1.6;
+    }
+
+    /* ─── CTA BAND ───────────────────────────────────────── */
+    .cta-band {
+      background: var(--black);
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+      padding: 80px 0;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .cta-band::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse 80% 100% at 50% 50%, rgba(0,200,255,.07), transparent 70%);
+    }
+
+    .cta-band .container { position: relative; }
+
+    .cta-band h2 {
+      font-family: 'Syne', sans-serif;
+      font-size: clamp(1.6rem, 4vw, 2.8rem);
+      font-weight: 800;
+      margin-bottom: 16px;
+    }
+
+    .cta-band p {
+      font-size: 1.05rem;
+      color: var(--muted);
+      margin-bottom: 40px;
+    }
+
+    .cta-band .btn-group {
+      display: flex;
+      gap: 14px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    /* ─── CONTACT ────────────────────────────────────────── */
+    #contato { background: var(--dark); }
+
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 40px;
+      align-items: start;
+    }
+
+    .contact-cards { display: flex; flex-direction: column; gap: 20px; }
+
+    .contact-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 28px 28px;
+      transition: border-color var(--transition);
+    }
+
+    .contact-card:hover { border-color: rgba(0,200,255,.2); }
+
+    .contact-card-tag {
+      font-family: 'Syne', sans-serif;
+      font-size: .7rem;
+      font-weight: 700;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+      color: var(--cyan);
+      margin-bottom: 12px;
+    }
+
+    .contact-card-phone {
+      font-family: 'Syne', sans-serif;
+      font-size: 1.6rem;
+      font-weight: 800;
+      margin-bottom: 18px;
+    }
+
+    .contact-card .actions { display: flex; gap: 10px; flex-wrap: wrap; }
+
+    .contact-card .btn { font-size: .78rem; padding: 10px 20px; }
+
+    /* form */
+    .contact-form {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 40px;
+    }
+
+    .contact-form h3 {
+      font-family: 'Syne', sans-serif;
+      font-size: 1.1rem;
+      font-weight: 700;
+      margin-bottom: 24px;
+      color: var(--muted);
+      text-transform: uppercase;
+      letter-spacing: .1em;
+    }
+
+    .form-group { margin-bottom: 16px; }
+
+    .form-group label {
+      display: block;
+      font-size: .78rem;
+      font-weight: 500;
+      color: var(--muted);
+      text-transform: uppercase;
+      letter-spacing: .06em;
+      margin-bottom: 6px;
+    }
+
+    .form-group input,
+    .form-group textarea {
+      width: 100%;
+      background: rgba(255,255,255,.04);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 12px 16px;
+      color: var(--white);
+      font-family: 'DM Sans', sans-serif;
+      font-size: .95rem;
+      transition: border-color var(--transition), box-shadow var(--transition);
+      outline: none;
+    }
+
+    .form-group input::placeholder,
+    .form-group textarea::placeholder { color: rgba(120,136,153,.5); }
+
+    .form-group input:focus,
+    .form-group textarea:focus {
+      border-color: rgba(0,200,255,.35);
+      box-shadow: 0 0 0 3px rgba(0,200,255,.07);
+    }
+
+    .form-group textarea { resize: vertical; min-height: 100px; }
+
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+
+    .form-submit {
+      margin-top: 8px;
+      width: 100%;
+      justify-content: center;
+      border-radius: 8px;
+    }
+
+    .form-status {
+      display: none;
+      margin-top: 12px;
+      padding: 12px 16px;
+      border-radius: 8px;
+      font-size: .88rem;
+      text-align: center;
+    }
+
+    .form-status.success {
+      display: block;
+      background: rgba(37,211,102,.1);
+      border: 1px solid rgba(37,211,102,.2);
+      color: #25d366;
+    }
+
+    .form-status.error {
+      display: block;
+      background: rgba(255,80,80,.1);
+      border: 1px solid rgba(255,80,80,.2);
+      color: #ff5050;
+    }
+
+    /* ─── FOOTER ─────────────────────────────────────────── */
+    footer {
+      background: var(--black);
+      border-top: 1px solid var(--border);
+      padding: 52px 0 36px;
+    }
+
+    .footer-top {
+      display: grid;
+      grid-template-columns: 1.4fr 1fr 1fr;
+      gap: 40px;
+      padding-bottom: 44px;
+      border-bottom: 1px solid var(--border);
+      margin-bottom: 32px;
+    }
+
+    .footer-logo img { height: 50px; margin-bottom: 18px; }
+
+    .footer-about {
+      font-size: .88rem;
+      color: var(--muted);
+      line-height: 1.7;
+      max-width: 280px;
+    }
+
+    .footer-col h4 {
+      font-family: 'Syne', sans-serif;
+      font-size: .75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: .12em;
+      color: var(--white);
+      margin-bottom: 18px;
+    }
+
+    .footer-col ul { list-style: none; }
+    .footer-col ul li { margin-bottom: 10px; }
+    .footer-col ul li a {
+      font-size: .88rem;
+      color: var(--muted);
+      transition: color var(--transition);
+    }
+    .footer-col ul li a:hover { color: var(--cyan); }
+
+    .footer-bottom {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .footer-copy {
+      font-size: .8rem;
+      color: var(--muted);
+    }
+
+    .footer-email {
+      font-size: .82rem;
+      color: var(--muted);
+      transition: color var(--transition);
+    }
+
+    .footer-email:hover { color: var(--cyan); }
+
+    /* ─── WHATSAPP FAB ───────────────────────────────────── */
+    .whatsapp-fab {
+      position: fixed;
+      bottom: 28px;
+      right: 28px;
+      z-index: 200;
+      width: 58px;
+      height: 58px;
+      background: #25d366;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 4px 24px rgba(37,211,102,.4);
+      transition: transform var(--transition), box-shadow var(--transition);
+      animation: fadeUp .6s .6s both;
+    }
+
+    .whatsapp-fab:hover {
+      transform: scale(1.08);
+      box-shadow: 0 8px 36px rgba(37,211,102,.5);
+    }
+
+    .whatsapp-fab svg { width: 30px; height: 30px; fill: #fff; }
+
+    /* ─── ANIMATIONS ─────────────────────────────────────── */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(24px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity .6s ease, transform .6s ease;
+    }
+
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* ─── RESPONSIVE ─────────────────────────────────────── */
+    @media (max-width: 900px) {
+      .contact-grid { grid-template-columns: 1fr; }
+      .footer-top { grid-template-columns: 1fr 1fr; }
+      .footer-top > :first-child { grid-column: 1 / -1; }
+    }
+
+    @media (max-width: 680px) {
+      .nav-links, .nav-cta { display: none; }
+      .hamburger { display: flex; }
+      section { padding: 72px 0; }
+      .hero-stats { gap: 28px; }
+      .form-row { grid-template-columns: 1fr; }
+      .footer-top { grid-template-columns: 1fr; }
+      .footer-bottom { flex-direction: column; text-align: center; }
+    }
+
+    /* mobile menu */
+    .mobile-menu {
+      display: none;
+      position: fixed;
+      inset: 0;
+      z-index: 99;
+      background: rgba(3,5,8,.97);
+      backdrop-filter: blur(20px);
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 32px;
+    }
+
+    .mobile-menu.open { display: flex; }
+
+    .mobile-menu a {
+      font-family: 'Syne', sans-serif;
+      font-size: 1.6rem;
+      font-weight: 700;
+      color: var(--white);
+      transition: color var(--transition);
+    }
+
+    .mobile-menu a:hover { color: var(--cyan); }
+
+    .mobile-close {
+      position: absolute;
+      top: 22px;
+      right: 24px;
+      font-size: 2rem;
+      color: var(--muted);
+      cursor: pointer;
+      transition: color var(--transition);
+    }
+
+    .mobile-close:hover { color: var(--white); }
+  </style>
+</head>
+<body>
+
+  <!-- ─── NAV ─────────────────────────────────────────────── -->
+  <nav id="navbar">
+    <div class="container nav-inner">
+      <a href="#" class="nav-logo">
+        <img src="assets/LogoPNG.png" alt="Liberty VOIP" />
+      </a>
+
+      <ul class="nav-links">
+        <li><a href="#servicos">Serviços</a></li>
+        <li><a href="#contato">Contato</a></li>
+      </ul>
+
+      <a href="https://wa.me/5549999440002" target="_blank" rel="noopener" class="nav-cta btn">
+        Falar com Especialista
+      </a>
+
+      <div class="hamburger" onclick="openMenu()">
+        <span></span><span></span><span></span>
+      </div>
+    </div>
+  </nav>
+
+  <!-- ─── MOBILE MENU ──────────────────────────────────────── -->
+  <div class="mobile-menu" id="mobileMenu">
+    <span class="mobile-close" onclick="closeMenu()">✕</span>
+    <a href="#servicos" onclick="closeMenu()">Serviços</a>
+    <a href="#contato" onclick="closeMenu()">Contato</a>
+    <a href="https://wa.me/5549999440002" target="_blank" onclick="closeMenu()" class="btn btn-whatsapp">WhatsApp</a>
+  </div>
+
+  <!-- ─── HERO ─────────────────────────────────────────────── -->
+  <section class="hero" id="inicio">
+    <div class="hero-bg">
+      <div class="orb orb-1"></div>
+      <div class="orb orb-2"></div>
+    </div>
+
+    <div class="container">
+      <div class="hero-content">
+        <div class="hero-badge">Telefonia Digital de Alta Performance</div>
+
+        <h1>
+          Liberdade para<br />
+          <em class="gradient-text">Se Comunicar!</em>
+        </h1>
+
+        <p>
+          Soluções de Telefonia Digital para escalar a comunicação do seu negócio com
+          tecnologia, agilidade e zero interrupções.
+        </p>
+
+        <div class="hero-actions">
+          <a href="https://wa.me/5549999440002" target="_blank" rel="noopener" class="btn btn-whatsapp">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+            Chamar no WhatsApp
+          </a>
+          <a href="#servicos" class="btn btn-outline">Ver Serviços</a>
+        </div>
+
+        <div class="hero-stats">
+          <div>
+            <div class="stat-num gradient-text">6+</div>
+            <div class="stat-label">Soluções de Telefonia</div>
+          </div>
+          <div>
+            <div class="stat-num gradient-text">100%</div>
+            <div class="stat-label">Digital & Escalável</div>
+          </div>
+          <div>
+            <div class="stat-num gradient-text">24/7</div>
+            <div class="stat-label">Disponibilidade</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── SERVICES ─────────────────────────────────────────── -->
+  <section id="servicos">
+    <div class="container">
+      <div class="section-header reveal">
+        <div class="section-tag">Nossos Serviços</div>
+        <h2 class="section-title">Soluções completas em<br /><span class="gradient-text">Telefonia Digital</span></h2>
+        <p class="section-sub">Conheça as soluções que a Liberty VOIP oferece para modernizar e escalar a comunicação da sua empresa.</p>
+      </div>
+
+      <div class="services-grid">
+
+        <div class="service-card reveal">
+          <div class="service-icon">🔗</div>
+          <h3>Rotas</h3>
+          <p>Soluções de rotas de comunicação confiáveis para garantir que sua empresa esteja sempre conectada e sem interrupções.</p>
+        </div>
+
+        <div class="service-card reveal">
+          <div class="service-icon">📞</div>
+          <h3>0300 e 0303</h3>
+          <p>Números de fácil identificação usados em todo o Brasil de forma econômica. Ideal para empresas que desejam expandir sua presença nacional.</p>
+        </div>
+
+        <div class="service-card reveal">
+          <div class="service-icon">🆓</div>
+          <h3>0800</h3>
+          <p>Facilitamos o acesso aos seus serviços, criando uma experiência acessível e gratuita para quem entra em contato com sua empresa.</p>
+        </div>
+
+        <div class="service-card reveal">
+          <div class="service-icon">🌐</div>
+          <h3>DID's</h3>
+          <p>Nossos números DID (Direct Inward Dialing) permitem presença em várias localidades sem a necessidade de escritórios físicos.</p>
+        </div>
+
+        <div class="service-card reveal">
+          <div class="service-icon">⭐</div>
+          <h3>4004</h3>
+          <p>Fornecemos números de fácil memorização para sua empresa, tornando mais simples para os clientes se conectarem com você.</p>
+        </div>
+
+        <div class="service-card reveal">
+          <div class="service-icon">💬</div>
+          <h3>SMS</h3>
+          <p>Envie mensagens direcionadas, atualizações e promoções para manter seus clientes informados e engajados com sua marca.</p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── CTA BAND ──────────────────────────────────────────── -->
+  <div class="cta-band">
+    <div class="container">
+      <h2 class="reveal">Experimente comunicações <span class="gradient-text">mais eficientes</span><br />e econômicas com a Liberty Voip!</h2>
+      <p class="reveal">Fale com um especialista agora e descubra a solução ideal para o seu negócio.</p>
+      <div class="btn-group reveal">
+        <a href="https://wa.me/5549999440002" target="_blank" rel="noopener" class="btn btn-whatsapp">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+          Chamar no WhatsApp
+        </a>
+        <a href="https://calendar.app.google/KYbBHHbCmVGtKCzb8" target="_blank" rel="noopener" class="btn btn-outline">
+          📅 Agendar Google Meet
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- ─── CONTACT ───────────────────────────────────────────── -->
+  <section id="contato">
+    <div class="container">
+      <div class="section-header reveal">
+        <div class="section-tag">Fale Conosco</div>
+        <h2 class="section-title">Vamos <span class="gold-text">Conversar?</span></h2>
+        <p class="section-sub">Nossa equipe está pronta para apresentar a solução certa para a sua empresa.</p>
+      </div>
+
+      <div class="contact-grid">
+        <div class="contact-cards">
+
+          <div class="contact-card reveal">
+            <div class="contact-card-tag">Comercial</div>
+            <div class="contact-card-phone gradient-text">(11) 5253-0233</div>
+            <div class="actions">
+              <a href="https://wa.me/5549999440002" target="_blank" class="btn btn-whatsapp">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+                WhatsApp
+              </a>
+              <a href="https://calendar.app.google/KYbBHHbCmVGtKCzb8" target="_blank" class="btn btn-outline">
+                📅 Meet
+              </a>
+            </div>
+          </div>
+
+          <div class="contact-card reveal">
+            <div class="contact-card-tag">Suporte</div>
+            <div class="contact-card-phone gradient-text">0800 001 0500</div>
+            <div class="actions">
+              <a href="https://wa.me/5549999440002" target="_blank" class="btn btn-whatsapp">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+                WhatsApp
+              </a>
+              <a href="tel:+5508000010500" class="btn btn-outline">📞 Ligar</a>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- Contact form -->
+        <div class="contact-form reveal">
+          <h3>Deixe uma mensagem</h3>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label for="nome">Nome</label>
+              <input type="text" id="nome" placeholder="Seu nome" />
+            </div>
+            <div class="form-group">
+              <label for="empresa">Empresa</label>
+              <input type="text" id="empresa" placeholder="Sua empresa" />
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label for="email">E-mail</label>
+              <input type="email" id="email" placeholder="seu@email.com" />
+            </div>
+            <div class="form-group">
+              <label for="telefone">Telefone</label>
+              <input type="tel" id="telefone" placeholder="(00) 00000-0000" />
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="mensagem">Mensagem</label>
+            <textarea id="mensagem" placeholder="Como podemos ajudar?"></textarea>
+          </div>
+
+          <button class="btn btn-primary form-submit" onclick="handleSubmit()">
+            Enviar Mensagem →
+          </button>
+
+          <div class="form-status" id="formStatus"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── FOOTER ────────────────────────────────────────────── -->
+  <footer>
+    <div class="container">
+      <div class="footer-top">
+        <div>
+          <div class="footer-logo">
+            <img src="assets/LogoPNG.png" alt="Liberty VOIP" />
+          </div>
+          <p class="footer-about">Soluções de Telefonia Digital para escalar a comunicação do seu negócio com tecnologia e confiabilidade.</p>
+        </div>
+
+        <div class="footer-col">
+          <h4>Serviços</h4>
+          <ul>
+            <li><a href="#servicos">Rotas</a></li>
+            <li><a href="#servicos">0300 e 0303</a></li>
+            <li><a href="#servicos">0800</a></li>
+            <li><a href="#servicos">DID's</a></li>
+            <li><a href="#servicos">4004</a></li>
+            <li><a href="#servicos">SMS</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4>Contato</h4>
+          <ul>
+            <li><a href="tel:+551152530233">(11) 5253-0233</a></li>
+            <li><a href="tel:+5508000010500">0800 001 0500</a></li>
+            <li><a href="mailto:contato@libertyvoip.com.br">contato@libertyvoip.com.br</a></li>
+            <li><a href="https://wa.me/5549999440002" target="_blank">WhatsApp</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <span class="footer-copy">©2024 LIBERTY VOIP — Todos os direitos reservados.</span>
+        <a href="mailto:contato@libertyvoip.com.br" class="footer-email">contato@libertyvoip.com.br</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ─── WHATSAPP FAB ──────────────────────────────────────── -->
+  <a href="https://wa.me/5549999440002" target="_blank" rel="noopener" class="whatsapp-fab" aria-label="Chamar no WhatsApp">
+    <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+  </a>
+
+  <!-- ─── SCRIPTS ────────────────────────────────────────────── -->
+  <script>
+    // ── Navbar scroll effect
+    const navbar = document.getElementById('navbar');
+    window.addEventListener('scroll', () => {
+      navbar.classList.toggle('scrolled', window.scrollY > 40);
+    });
+
+    // ── Mobile menu
+    function openMenu()  { document.getElementById('mobileMenu').classList.add('open'); document.body.style.overflow = 'hidden'; }
+    function closeMenu() { document.getElementById('mobileMenu').classList.remove('open'); document.body.style.overflow = ''; }
+
+    // ── Scroll reveal
+    const reveals = document.querySelectorAll('.reveal');
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((e, i) => {
+        if (e.isIntersecting) {
+          setTimeout(() => e.target.classList.add('visible'), i * 80);
+          observer.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.12 });
+    reveals.forEach(el => observer.observe(el));
+
+    // ── Contact form (mailto fallback — works static)
+    function handleSubmit() {
+      const nome     = document.getElementById('nome').value.trim();
+      const empresa  = document.getElementById('empresa').value.trim();
+      const email    = document.getElementById('email').value.trim();
+      const telefone = document.getElementById('telefone').value.trim();
+      const mensagem = document.getElementById('mensagem').value.trim();
+      const status   = document.getElementById('formStatus');
+
+      if (!nome || !email || !mensagem) {
+        status.className = 'form-status error';
+        status.textContent = 'Por favor, preencha Nome, E-mail e Mensagem.';
+        return;
+      }
+
+      const subject = encodeURIComponent(`Contato via site — ${nome} (${empresa || 'sem empresa'})`);
+      const body    = encodeURIComponent(
+        `Nome: ${nome}\nEmpresa: ${empresa}\nTelefone: ${telefone}\nE-mail: ${email}\n\n${mensagem}`
+      );
+
+      window.location.href = `mailto:contato@libertyvoip.com.br?subject=${subject}&body=${body}`;
+
+      status.className = 'form-status success';
+      status.textContent = '✓ Abrindo seu cliente de e-mail… Em breve nossa equipe responde!';
+    }
+  </script>
+
+</body>
+</html>
